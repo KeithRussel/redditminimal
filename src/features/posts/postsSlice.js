@@ -1,36 +1,38 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 // Load popular data from reddit api
-export const getPopular = createAsyncThunk("posts/getPopular", async () => {
+export const loadPopular = createAsyncThunk("posts/getPopular", async () => {
   const response = await fetch("https://www.reddit.com/r/popular.json");
   const json = await response.json();
-  console.log(json);
-  return json;
+  return json.data.children;
 });
 
 export const postsSlice = createSlice({
   name: "posts",
   initialState: {
-    posts: {},
+    posts: [],
     isLoadingPosts: false,
     failedToLoadPosts: false,
   },
   extraReducers: {
-    [getPopular.pending]: (state, action) => {
+    [loadPopular.pending]: (state, action) => {
       state.isLoadingPosts = true;
       state.failedToLoadPosts = false;
     },
-    [getPopular.fulfilled]: (state, action) => {
+    [loadPopular.fulfilled]: (state, action) => {
       state.isLoadingPosts = false;
       state.failedToLoadPosts = false;
       state.posts = action.payload;
     },
-    [getPopular.rejected]: (state, action) => {
+    [loadPopular.rejected]: (state, action) => {
       state.isLoadingPosts = false;
       state.failedToLoadPosts = true;
+      state.posts = [];
     },
   },
 });
 
 export const selectPosts = (state) => state.posts.posts;
 export const isLoadingPosts = (state) => state.posts.isLoadingPosts;
+
+export default postsSlice.reducer;
