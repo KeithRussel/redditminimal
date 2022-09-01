@@ -2,10 +2,7 @@ import React from "react";
 import styles from "../posts/Posts.module.css";
 import { faArrowUp, faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-const isImage = (url) => {
-  return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
-};
+import ImageCheck from "../../helpers/ImageCheck";
 
 const Post = ({ post }) => {
   const { subreddit, url, title, ups } = post.data;
@@ -18,7 +15,7 @@ const Post = ({ post }) => {
       </div>
       <div className={styles.col}>
         <h3>{title}</h3>
-        {isImage(url) ? (
+        {ImageCheck(url) ? (
           <img className={styles.img} src={url} alt="sampleimage" />
         ) : (
           <img
