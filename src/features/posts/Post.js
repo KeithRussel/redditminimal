@@ -1,11 +1,15 @@
 import React from "react";
 import styles from "../posts/Posts.module.css";
-import { faArrowUp, faArrowDown } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowUp,
+  faArrowDown,
+  faMessage,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ImageCheck from "../../helpers/ImageCheck";
 
 const Post = ({ post }) => {
-  const { subreddit, url, title, ups } = post.data;
+  const { url, title, ups, author } = post.data;
   return (
     <div className={styles.post}>
       <div className={styles.col}>
@@ -24,6 +28,13 @@ const Post = ({ post }) => {
             alt="sampleimage"
           />
         )}
+        <div className={styles.bottomPost}>
+          <div className={styles.author}>Posted by: {author}</div>
+          <div className={styles.comments}>
+            <FontAwesomeIcon icon={faMessage} size="2x" />
+            <span>234</span>
+          </div>
+        </div>
       </div>
     </div>
   );
