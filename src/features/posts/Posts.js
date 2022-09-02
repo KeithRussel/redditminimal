@@ -1,17 +1,27 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Post from "./Post";
-import { loadPopular, isLoadingPosts, selectPosts } from "./postsSlice";
+import {
+  fetchPosts,
+  isLoadingPosts,
+  selectFilteredPosts,
+  selectedSubreddit,
+} from "./postsSlice";
 
 const Posts = () => {
   const dispatch = useDispatch();
-  const posts = useSelector(selectPosts);
+  const posts = useSelector(selectFilteredPosts);
+  const subRedditSelected = useSelector(selectedSubreddit);
   const postsAreLoading = useSelector(isLoadingPosts);
 
   useEffect(() => {
-    dispatch(loadPopular());
-    console.log(dispatch(loadPopular()));
-  }, [dispatch]);
+    console.log(subRedditSelected);
+    if (subRedditSelected !== "/r/pics") {
+      dispatch(fetchPosts(subRedditSelected));
+    } else {
+      dispatch(fetchPosts(subRedditSelected));
+    }
+  }, [dispatch, subRedditSelected]);
 
   if (postsAreLoading) return <div>Loading Posts</div>;
 

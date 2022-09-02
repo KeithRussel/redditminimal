@@ -1,0 +1,11 @@
+#posts {
+    padding: 0;
+    list-style: none;
+    background-color: #ddd;
+}
+
+#posts li {
+    padding: 15px 0 15px 15px;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #fff;
+}

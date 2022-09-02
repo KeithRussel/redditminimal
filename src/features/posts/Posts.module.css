@@ -15,6 +15,11 @@
     padding: 0 1rem;
 }
 
+.col h3 {
+    border-left: 2px solid;
+    padding-left: 15px;
+}
+
 .col:nth-child(1) {
     flex: 1 4 auto;
     text-align: center;

@@ -1,13 +1,13 @@
 import React from "react";
 import Posts from "../../features/posts/Posts";
-import Category from "../../features/category/Category";
+import Subreddits from "../../features/subreddits/Subreddits";
 
 const Content = () => {
   return (
     <main>
       <div className="sidebar">Lorem Ipsum</div>
       <Posts />
-      <Category />
+      <Subreddits />
     </main>
   );
 };

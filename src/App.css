@@ -33,7 +33,7 @@ main {
 }
 
 /* Sidebar */
-.sidebar, #posts, #category {
+.sidebar, #category {
     display: flex;
     flex-direction: column;
     background-color: #ddd
