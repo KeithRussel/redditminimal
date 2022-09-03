@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ImageCheck from "../../helpers/ImageCheck";
 
 const Post = ({ post }) => {
-  const { url, title, ups, author } = post.data;
+  const { url, title, ups, author } = post;
   return (
     <div className={styles.post}>
       <div className={styles.col}>
