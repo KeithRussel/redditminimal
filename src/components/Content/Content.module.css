@@ -1,0 +1,10 @@
+.sidebar {
+    /* background-image: url('https://www.redditstatic.com/desktop2x/img/leaderboard/banner-background.png'); */
+    background-color: hsl(20.1, 74.9%, 50%);
+    display: flex;
+    justify-content: center;
+}
+
+.sidebar p {
+    font-size: 2rem;
+}

@@ -8,8 +8,8 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ImageCheck from "../../helpers/ImageCheck";
 
-const Post = ({ post }) => {
-  const { url, title, ups, author } = post;
+const Post = ({ post, onToggleComments }) => {
+  const { url, title, ups, author, permalink } = post;
   return (
     <div className={styles.post}>
       <div className={styles.col}>
@@ -31,7 +31,11 @@ const Post = ({ post }) => {
         <div className={styles.bottomPost}>
           <div className={styles.author}>Posted by: {author}</div>
           <div className={styles.comments}>
-            <FontAwesomeIcon icon={faMessage} size="2x" />
+            <FontAwesomeIcon
+              icon={faMessage}
+              size="2x"
+              onClick={() => onToggleComments(permalink)}
+            />
             <span>234</span>
           </div>
         </div>

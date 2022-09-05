@@ -6,6 +6,7 @@ import {
   isLoadingPosts,
   selectFilteredPosts,
   selectedSubreddit,
+  fetchComments,
 } from "./postsSlice";
 
 const Posts = () => {
@@ -15,7 +16,7 @@ const Posts = () => {
   const postsAreLoading = useSelector(isLoadingPosts);
 
   useEffect(() => {
-    console.log(subRedditSelected);
+    // console.log(subRedditSelected);
     if (subRedditSelected !== "/r/pics") {
       dispatch(fetchPosts(subRedditSelected));
     } else {
@@ -23,12 +24,26 @@ const Posts = () => {
     }
   }, [dispatch, subRedditSelected]);
 
+  const onToggleComments = (index) => {
+    const getComments = (permalink) => {
+      dispatch(fetchComments(index, permalink));
+    };
+
+    return getComments;
+  };
+
   if (postsAreLoading) return <div>Loading Posts</div>;
 
   return (
     <div id="posts">
       {posts.map((post, index) => {
-        return <Post key={index} post={post} />;
+        return (
+          <Post
+            key={index}
+            post={post}
+            onToggleComments={onToggleComments(index)}
+          />
+        );
       })}
     </div>
   );

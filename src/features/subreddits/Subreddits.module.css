@@ -1,11 +1,21 @@
 #posts {
     padding: 0;
     list-style: none;
-    background-color: #ddd;
 }
 
 #posts li {
-    padding: 15px 0 15px 15px;
-    margin-bottom: 1rem;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid #bbb;
+}
+
+#posts li button {
+    width: 100%;
+    background-color: #fff;
+    border: 0;
+    outline: none;
+    padding: 15px 0;
+}
+
+#posts li:hover button {
+    background-color: hsla(20, 75%, 50%, 1);
+    color: #fff;
 }
