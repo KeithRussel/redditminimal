@@ -8,7 +8,7 @@ import Search from "./features/searchFilter/Search";
 function App(props) {
   return (
     <Router>
-      <div className="App">
+      <div className="app">
         <Header />
         <div className="container">
           <Search />

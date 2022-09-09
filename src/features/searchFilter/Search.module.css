@@ -10,22 +10,9 @@
     padding: 12px 20px;
     box-sizing: border-box;
     border: 2px solid #ccc;
-    /* border-right: 0;
-    border-radius: 0; */
     font-size: 16px;
-    background-color: white;
-    /* background-image: url('searchicon.png'); */
+    background-color: var(--white-background-color);
     background-position: 10px 13px;
     background-repeat: no-repeat;
     padding-left: 42px;
 }
-
-/* #search button[type=submit] {
-    padding: 15px;
-    border-left: 0;
-    border-radius: 0;
-    background-color: #fff;
-    border-bottom: 2px solid #ccc;
-    border-top: 2px solid #ccc;
-    border-right: 2px solid #ccc;
-} */

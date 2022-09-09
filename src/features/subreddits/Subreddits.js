@@ -15,7 +15,7 @@ const Subreddits = () => {
 
   useEffect(() => {
     dispatch(loadSubReddits());
-    console.log(dispatch(loadSubReddits()));
+    // console.log(dispatch(loadSubReddits()));
   }, [dispatch]);
 
   if (subredditsAreLoading) return <div>Loading Posts</div>;

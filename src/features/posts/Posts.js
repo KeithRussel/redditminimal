@@ -7,6 +7,7 @@ import {
   selectFilteredPosts,
   selectedSubreddit,
   fetchComments,
+  // getPostComments,
 } from "./postsSlice";
 
 const Posts = () => {
@@ -16,7 +17,7 @@ const Posts = () => {
   const postsAreLoading = useSelector(isLoadingPosts);
 
   useEffect(() => {
-    // console.log(subRedditSelected);
+    // Check the subReddit then dispatch the fetchPosts action according to subReddit selected.
     if (subRedditSelected !== "/r/pics") {
       dispatch(fetchPosts(subRedditSelected));
     } else {
@@ -29,6 +30,7 @@ const Posts = () => {
       dispatch(fetchComments(index, permalink));
     };
 
+    // console.log(getComments);
     return getComments;
   };
 
