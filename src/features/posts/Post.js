@@ -77,19 +77,6 @@ const Post = ({ post, onToggleComments }) => {
           </div>
         </div>
       </div>
-
-      {/* Comments Section */}
-      {/* <div className={styles.commentsDiv}>
-        {showingComments &&
-          comments.map((comment) => {
-            return (
-              <div>
-                <h4>{comment.author}</h4>
-                <p>{comment.body}</p>
-              </div>
-            );
-          })}
-      </div> */}
       {displayComments()}
     </>
   );

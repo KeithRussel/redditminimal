@@ -52,3 +52,15 @@ main {
     flex-direction: column;
     background-color: #ddd
 }
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .container {
+        max-width: 100%;
+        grid-template-rows: 1fr;
+    }
+
+    main {
+        grid-template-columns: 1fr;
+    }
+}
