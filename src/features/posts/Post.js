@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../posts/Posts.module.css";
 import {
   faArrowUp,
@@ -8,7 +8,14 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ImageCheck from "../../helpers/ImageCheck";
 
+const getWindowSize = () => {
+  const { innerWidth } = window;
+
+  return { innerWidth };
+};
+
 const Post = ({ post, onToggleComments }) => {
+  const [screenWidth, setScreenWidth] = useState(getWindowSize());
   // Render props data
   const {
     url,
@@ -21,6 +28,18 @@ const Post = ({ post, onToggleComments }) => {
     showingComments,
     num_comments,
   } = post;
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setScreenWidth(getWindowSize());
+    };
+
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
 
   const displayComments = () => {
     if (loadingComments) {
@@ -49,9 +68,19 @@ const Post = ({ post, onToggleComments }) => {
     <>
       <div className={styles.post}>
         <div className={styles.col}>
-          <FontAwesomeIcon icon={faArrowUp} size="3x" />
-          <div className={styles.upvote}>{ups}</div>
-          <FontAwesomeIcon icon={faArrowDown} size="3x" />
+          {screenWidth.innerWidth <= 412 ? (
+            <>
+              <FontAwesomeIcon icon={faArrowUp} size="2x" />
+              <div className={styles.upvote}>{ups}</div>
+              <FontAwesomeIcon icon={faArrowDown} size="2x" />
+            </>
+          ) : (
+            <>
+              <FontAwesomeIcon icon={faArrowUp} size="3x" />
+              <div className={styles.upvote}>{ups}</div>
+              <FontAwesomeIcon icon={faArrowDown} size="3x" />
+            </>
+          )}
         </div>
         <div className={styles.col}>
           <h3>{title}</h3>
