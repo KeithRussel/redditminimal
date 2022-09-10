@@ -64,3 +64,21 @@ main {
         grid-template-columns: 1fr;
     }
 }
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .container {
+        max-width: 100%;
+    }
+
+    main {
+        padding: 0 15px;
+    }
+}
+
+/* Landscape of extra big tablet */
+@media screen and (min-width: 992px) and (max-width: 1080px) {
+    .container {
+        max-width: 100%;
+    }
+}

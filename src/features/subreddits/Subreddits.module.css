@@ -19,3 +19,13 @@
     background-color: var(--brand-color);
     color: #fff;
 }
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+   #posts {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-row: 1/2;
+        margin: 0 15px;
+   } 
+}

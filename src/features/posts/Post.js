@@ -8,14 +8,8 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ImageCheck from "../../helpers/ImageCheck";
 
-const getWindowSize = () => {
-  const { innerWidth } = window;
-
-  return { innerWidth };
-};
-
 const Post = ({ post, onToggleComments }) => {
-  const [screenWidth, setScreenWidth] = useState(getWindowSize());
+  const [screenWidth, setScreenWidth] = useState(1920);
   // Render props data
   const {
     url,
@@ -30,15 +24,8 @@ const Post = ({ post, onToggleComments }) => {
   } = post;
 
   useEffect(() => {
-    const handleWindowResize = () => {
-      setScreenWidth(getWindowSize());
-    };
-
-    window.addEventListener("resize", handleWindowResize);
-
-    return () => {
-      window.removeEventListener("resize", handleWindowResize);
-    };
+    let widthQuery = window.screen.width;
+    return setScreenWidth(widthQuery);
   }, []);
 
   const displayComments = () => {
@@ -68,7 +55,7 @@ const Post = ({ post, onToggleComments }) => {
     <>
       <div className={styles.post}>
         <div className={styles.col}>
-          {screenWidth.innerWidth <= 412 ? (
+          {screenWidth <= 412 ? (
             <>
               <FontAwesomeIcon icon={faArrowUp} size="2x" />
               <div className={styles.upvote}>{ups}</div>
@@ -100,8 +87,9 @@ const Post = ({ post, onToggleComments }) => {
                 icon={faMessage}
                 size="2x"
                 onClick={() => onToggleComments(permalink)}
+                color="#9bafcb"
               />
-              <span>{num_comments}</span>
+              <span>{num_comments} Comments</span>
             </div>
           </div>
         </div>
