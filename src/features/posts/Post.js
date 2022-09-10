@@ -17,9 +17,33 @@ const Post = ({ post, onToggleComments }) => {
     author,
     permalink,
     comments,
+    loadingComments,
     showingComments,
     num_comments,
   } = post;
+
+  const displayComments = () => {
+    if (loadingComments) {
+      return <p>Loading Comments...</p>;
+    }
+
+    if (showingComments) {
+      return (
+        <div className={styles.commentsDiv}>
+          {comments.map((comment) => {
+            return (
+              <div>
+                <h4>{comment.author}</h4>
+                <p>{comment.body}</p>
+              </div>
+            );
+          })}
+        </div>
+      );
+    }
+
+    return null;
+  };
 
   return (
     <>
@@ -55,7 +79,7 @@ const Post = ({ post, onToggleComments }) => {
       </div>
 
       {/* Comments Section */}
-      <div className="comments">
+      {/* <div className={styles.commentsDiv}>
         {showingComments &&
           comments.map((comment) => {
             return (
@@ -65,7 +89,8 @@ const Post = ({ post, onToggleComments }) => {
               </div>
             );
           })}
-      </div>
+      </div> */}
+      {displayComments()}
     </>
   );
 };
