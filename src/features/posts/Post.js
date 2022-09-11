@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import ReactLoading from "react-loading";
 import styles from "../posts/Posts.module.css";
 import {
   faArrowUp,
@@ -20,6 +21,7 @@ const Post = ({ post, onToggleComments }) => {
     comments,
     loadingComments,
     showingComments,
+    errorComments,
     num_comments,
   } = post;
 
@@ -30,7 +32,16 @@ const Post = ({ post, onToggleComments }) => {
 
   const displayComments = () => {
     if (loadingComments) {
-      return <p>Loading Comments...</p>;
+      return (
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <ReactLoading
+            type={"spin"}
+            color={"#d03b06"}
+            height={"5%"}
+            width={"5%"}
+          />
+        </div>
+      );
     }
 
     if (showingComments) {
@@ -46,6 +57,10 @@ const Post = ({ post, onToggleComments }) => {
           })}
         </div>
       );
+    }
+
+    if (errorComments) {
+      return <p>Failed to load comments please try to refresh the page.</p>;
     }
 
     return null;
