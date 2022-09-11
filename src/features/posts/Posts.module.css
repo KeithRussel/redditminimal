@@ -1,3 +1,10 @@
+.loadscreen {
+    height: 100vh;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
 .post {
     display: flex;
     margin: 1rem;

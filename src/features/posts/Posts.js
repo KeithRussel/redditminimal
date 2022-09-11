@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import ReactLoading from "react-loading";
 import { useDispatch, useSelector } from "react-redux";
 import Post from "./Post";
 import {
@@ -7,8 +8,8 @@ import {
   selectFilteredPosts,
   selectedSubreddit,
   fetchComments,
-  // getPostComments,
 } from "./postsSlice";
+import styles from "./Posts.module.css";
 
 const Posts = () => {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ const Posts = () => {
     }
   }, [dispatch, subRedditSelected]);
 
+  // Toggle Icon Comment
   const onToggleComments = (index) => {
     const getComments = (permalink) => {
       dispatch(fetchComments(index, permalink));
@@ -34,7 +36,17 @@ const Posts = () => {
     return getComments;
   };
 
-  if (postsAreLoading) return <div>Loading Posts</div>;
+  if (postsAreLoading)
+    return (
+      <div className={styles.loadscreen}>
+        <ReactLoading
+          type={"bubbles"}
+          color={"#d03b06"}
+          height={"20%"}
+          width={"20%"}
+        />
+      </div>
+    );
 
   return (
     <div id="posts">
