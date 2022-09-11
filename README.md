@@ -4,9 +4,11 @@ My Reddit Lite is a portfolio challenge in Codecademy Pro platform.
 Stacks that I used listed below.
 
 - All data is generated from reddit api
+- HTML
+- CSS Module (styling each component)
+- Javascript
 - ReactJS
 - Redux Toolkit
-- CSS Module (styling each component)
 - Surge sh (Deployment for frontend/static sites)
 
 ## Features
