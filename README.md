@@ -1,4 +1,4 @@
-# Reddit Lite App
+# Reddit Lite App | [Live URL](http://redditminimal-byrussel.surge.sh/)
 
 My Reddit Lite is a portfolio challenge in Codecademy Pro platform.
 Stacks that I used listed below.
