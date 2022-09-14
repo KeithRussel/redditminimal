@@ -18,6 +18,7 @@
 #posts li:hover button {
     background-color: var(--brand-color);
     color: #fff;
+    transition: 0.5s;
 }
 
 /* Extra small devices (phones, 600px and down) */
