@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from "react";
 import ReactLoading from "react-loading";
-import styles from "../posts/Posts.module.css";
+import {
+  SinglePost,
+  Column,
+  Upvote,
+  Img,
+  BottomPost,
+  Author,
+  Comments,
+  CommentsDiv,
+} from "./stylePosts";
 import {
   faArrowUp,
   faArrowDown,
@@ -46,7 +55,7 @@ const Post = ({ post, onToggleComments }) => {
 
     if (showingComments) {
       return (
-        <div className={styles.commentsDiv}>
+        <CommentsDiv>
           {comments.map((comment) => {
             return (
               <div>
@@ -55,7 +64,7 @@ const Post = ({ post, onToggleComments }) => {
               </div>
             );
           })}
-        </div>
+        </CommentsDiv>
       );
     }
 
@@ -68,36 +77,35 @@ const Post = ({ post, onToggleComments }) => {
 
   return (
     <>
-      <div className={styles.post}>
-        <div className={styles.col}>
+      <SinglePost>
+        <Column>
           {screenWidth <= 412 ? (
             <>
               <FontAwesomeIcon icon={faArrowUp} size="2x" />
-              <div className={styles.upvote}>{ups}</div>
+              <Upvote>{ups}</Upvote>
               <FontAwesomeIcon icon={faArrowDown} size="2x" />
             </>
           ) : (
             <>
               <FontAwesomeIcon icon={faArrowUp} size="3x" />
-              <div className={styles.upvote}>{ups}</div>
+              <Upvote>{ups}</Upvote>
               <FontAwesomeIcon icon={faArrowDown} size="3x" />
             </>
           )}
-        </div>
-        <div className={styles.col}>
+        </Column>
+        <Column>
           <h3>{title}</h3>
           {ImageCheck(url) ? (
-            <img className={styles.img} src={url} alt="sampleimage" />
+            <Img src={url} alt="sampleimage" />
           ) : (
-            <img
-              className={styles.img}
+            <Img
               src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Image_not_available.png"
               alt="sampleimage"
             />
           )}
-          <div className={styles.bottomPost}>
-            <div className={styles.author}>Posted by: {author}</div>
-            <div className={styles.comments}>
+          <BottomPost>
+            <Author>Posted by: {author}</Author>
+            <Comments>
               <FontAwesomeIcon
                 icon={faMessage}
                 size="2x"
@@ -105,10 +113,10 @@ const Post = ({ post, onToggleComments }) => {
                 color="#9bafcb"
               />
               <span>{num_comments} Comments</span>
-            </div>
-          </div>
-        </div>
-      </div>
+            </Comments>
+          </BottomPost>
+        </Column>
+      </SinglePost>
       {displayComments()}
     </>
   );

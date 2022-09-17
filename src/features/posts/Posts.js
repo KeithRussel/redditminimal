@@ -9,7 +9,7 @@ import {
   selectedSubreddit,
   fetchComments,
 } from "./postsSlice";
-import styles from "./Posts.module.css";
+import { LoadScreen } from "./stylePosts";
 
 const Posts = () => {
   const dispatch = useDispatch();
@@ -38,14 +38,14 @@ const Posts = () => {
 
   if (postsAreLoading)
     return (
-      <div className={styles.loadscreen}>
+      <LoadScreen>
         <ReactLoading
           type={"bubbles"}
           color={"#d03b06"}
           height={"20%"}
           width={"20%"}
         />
-      </div>
+      </LoadScreen>
     );
 
   return (

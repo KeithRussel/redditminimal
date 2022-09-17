@@ -1,17 +1,18 @@
 import React from "react";
 import { useDispatch } from "react-redux/es/exports";
 import { setSelectedSubreddit } from "../posts/postsSlice";
+import { Button, List } from "./styleSubreddits";
 
 const SubredditsList = ({ item }) => {
   const dispatch = useDispatch();
   const { display_name, url } = item.data;
 
   return (
-    <li>
-      <button type="button" onClick={() => dispatch(setSelectedSubreddit(url))}>
+    <List>
+      <Button type="button" onClick={() => dispatch(setSelectedSubreddit(url))}>
         {display_name}
-      </button>
-    </li>
+      </Button>
+    </List>
   );
 };
 

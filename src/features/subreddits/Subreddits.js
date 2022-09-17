@@ -5,7 +5,7 @@ import {
   loadSubReddits,
   selectSubreddits,
 } from "../subreddits/subredditsSlice";
-import styles from "../subreddits/Subreddits.module.css";
+import { UnorderedList } from "./styleSubreddits";
 
 const Subreddits = () => {
   const dispatch = useDispatch();
@@ -17,11 +17,11 @@ const Subreddits = () => {
   }, [dispatch]);
 
   return (
-    <ul id={styles.posts}>
+    <UnorderedList>
       {subreddits.map((item, index) => {
         return <SubredditsList key={index} item={item} />;
       })}
-    </ul>
+    </UnorderedList>
   );
 };
 
